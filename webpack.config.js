@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const bootstrap = require('bootstrap');
 
 module.exports = {
   entry: './js/app.js',
@@ -34,6 +33,12 @@ module.exports = {
           'css-loader',
           'sass-loader',
         ]
+      },
+      {
+        test: /\.jpg|png$/,
+        use: [
+          'file-loader',
+        ]
       }
     ]
   },
@@ -42,7 +47,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './index.html'
     }),
-    new webpack.HotModuleReplacementPlugin(),
-    new bootstrap(),
+    new webpack.HotModuleReplacementPlugin()
   ]
 };
